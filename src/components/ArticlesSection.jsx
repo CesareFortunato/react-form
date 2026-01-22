@@ -7,21 +7,26 @@ function ArticlesSection() {
     const [articles, setArticles] = useState(initialArticles);
     const [newArticle, setNewArticle] = useState('Nuovo Articolo')
 
-    const handleSubmit = () => {
+    const handleSubmit = e => {
+        e.preventDefault();
+        const updatedArticlesList = [...articles, newArticle];
+        setArticles(updatedArticlesList);
 
     }
 
     return (
         <>
-        <ul>
-            {articles.map((article, index) => ( <li key={index}>{article}</li>))}
-        </ul>
-        <form onSubmit={handleSubmit}>
-        <input type="text"
-        value={newArticle}
-        onChange={e => {setNewArticle(e.target.value)}}
-        />
-        </form>
+
+            <form onSubmit={handleSubmit}>
+                <ul>
+                    {articles.map((article, index) => (<li key={index}>{article}</li>))}
+                </ul>
+                <input type="text"
+                    value={newArticle}
+                    onChange={e => { setNewArticle(e.target.value) }}
+                />
+                <button className="btn btn-primary">Invia</button>
+            </form>
         </>
     )
 }
