@@ -24,15 +24,15 @@ function ArticlesSection() {
     return (
         <>
 
-            <ul>
-                {articles.map((article, index) => (<li key={index}>{article} <button className="btn btn-outline-danger btn-sm"
+        <ul>
+                    {articles.map((article, index) => (<li key={index}>{article} <button className="btn btn-outline-danger btn-sm"
                     onClick={() => removeArticle(index)}
-                >
-                    elimina</button></li>))}
-            </ul>
+                    >
+                        elimina</button></li>))}
+                </ul>
 
             <form onSubmit={handleSubmit}>
-
+                
                 <input type="text"
                     value={newArticle}
                     onChange={e => { setNewArticle(e.target.value) }}
