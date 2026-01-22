@@ -14,13 +14,25 @@ function ArticlesSection() {
 
     }
 
+    const removeArticle = i => {
+        const updatedArticlesList = articles.filter((article, index) => {
+            return index !== i
+        });
+        setArticles(updatedArticlesList);
+    }
+
     return (
         <>
 
+            <ul>
+                {articles.map((article, index) => (<li key={index}>{article} <button className="btn btn-outline-danger btn-sm"
+                    onClick={() => removeArticle(index)}
+                >
+                    elimina</button></li>))}
+            </ul>
+
             <form onSubmit={handleSubmit}>
-                <ul>
-                    {articles.map((article, index) => (<li key={index}>{article}</li>))}
-                </ul>
+
                 <input type="text"
                     value={newArticle}
                     onChange={e => { setNewArticle(e.target.value) }}
